@@ -1,5 +1,6 @@
 export default async function Home() {
-  let data = await fetch("http://localhost:3000/", {
+  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  let data = await fetch(`${apiBaseUrl}/api/hello`, {
     cache: "no-store",
   });
   var posts = await data.json();
