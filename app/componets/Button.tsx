@@ -22,9 +22,7 @@ function Button() {
   inputValue.current?.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
       if (inputValue.current) {
-        if (inputValue.current.value !== " ") {
-          fetch_data(inputValue.current.value);
-        }
+        fetch_data(inputValue.current.value);
       }
     }
   });
