@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
+import styles from "./Button.module.css";
 const backendUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 function Button() {
   const [aiwords, setaiwords] = useState(["enter data"]);
@@ -10,27 +11,40 @@ function Button() {
     });
 
     const posts = await data.json();
-    const ai_words = posts.ai_words;
+
+    const ai_words = posts.message;
     console.log(ai_words);
     setaiwords(ai_words);
   };
 
   const inputValue = useRef<HTMLInputElement>(null);
 
+  inputValue.current?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      if (inputValue.current) {
+        if (inputValue.current.value !== " ") {
+          fetch_data(inputValue.current.value);
+        }
+      }
+    }
+  });
+
   return (
-    <div>
-      <input type="text" className="input-field" ref={inputValue} />
+    <div className={`${styles.container}`}>
+      <input type="text" className={`${styles.input_field}`} ref={inputValue} />
       <button
-        className=" button-outline "
+        className={`${styles.button}`}
         onClick={() => {
           if (inputValue.current) {
             fetch_data(inputValue.current.value);
           }
         }}
       >
-        click
+        →
       </button>
-      <h1>{Array.isArray(aiwords) ? aiwords.join(", ") : aiwords}</h1>
+      <h1 className={`${styles.h1}`}>
+        {Array.isArray(aiwords) ? aiwords.join(", ") : aiwords}
+      </h1>
     </div>
   );
 }
