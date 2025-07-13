@@ -2,7 +2,7 @@
 import React, { useRef, useState } from "react";
 const backendUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 function Button() {
-  let [aiwords, setaiwords] = useState(["enter data"]);
+  const [aiwords, setaiwords] = useState(["enter data"]);
   const fetch_data = async (input: string) => {
     setaiwords(["loading..."]);
     const data = await fetch(`${backendUrl}/api/${input}`, {
