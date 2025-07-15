@@ -1,24 +1,9 @@
-.input_field {
-    margin-top: 1rem;
-    outline: none;
-    height: 2.5rem;
-    border: 2px solid#252423;
-    border-radius: 20px;
-    color: #cdcbcb;
-    grid-column: span 3;
-    grid-row: 9;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
 
-.input_field:focus {
-    outline: none;
-}
 .container {
     display: grid;
     height: 100%;
     width: 100%;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
     grid-gap: 10px;
 
@@ -30,31 +15,77 @@
     border-radius: 10px;
 }
 .h1 {
-    font-family: var(--font-noto-sans);
+    font-family: var(--font-tomorrow);
+
     font-size: 1rem;
     font-weight: light;
+    font-style: italic;
     height: 100%;
     padding: 0.6rem;
     border: 2px solid#252423;
     border-radius: 0.5rem;
-    grid-column: span 3;
+    grid-column: span 8;
     grid-row: span 8;
     color: #cdcbcb;
     text-overflow: scroll;
     overflow: auto;
 }
+
+.inputbox {
+    margin-top: 0.5rem;
+    grid-column: span 8;
+    grid-row: 9;
+
+    
+    display: grid;
+    grid-gap:0.5rem ;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+.input_field {
+    font-family: var(--font-tomorrow);
+    font-weight: normal;
+    font-style: italic;
+    outline: none;
+    height: 2.5rem;
+    border: 2px solid#252423;
+    border-radius: 20px;
+    color: #cdcbcb;
+    grid-row: 1;
+    grid-column:span 8;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    
+}
+
+.input_field::placeholder{
+    font-family: var(--font-tomorrow);
+    font-weight: normal;
+    font-style: italic;
+}
+
+
 .button {
-    top: 89.75%;
-    left: 94.5%;
-    transform: translate(50%, 50%);
-    position: absolute;
-    width: 2.2rem;
-    height: 2.2rem;
-    text-align: center;
+    
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    offset: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+   
     background-color: transparent;
+    border: 2px solid #0f1325;
     color: #e6e6e6;
 
     border-radius: 20px;
-
+    grid-row:1;
+    grid-column: 9;
     cursor: pointer;
 }

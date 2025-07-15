@@ -29,17 +29,19 @@ function Button() {
 
   return (
     <div className={`${styles.container}`}>
-      <input type="text" className={`${styles.input_field}`} ref={inputValue} />
-      <button
-        className={`${styles.button}`}
-        onClick={() => {
-          if (inputValue.current) {
-            fetch_data(inputValue.current.value);
-          }
-        }}
-      >
-        →
-      </button>
+      <div className={`${styles.inputbox}`}>
+          <input type="text" className={`${styles.input_field}`} placeholder="enter data" ref={inputValue} />
+          <button
+            className={`${styles.button}`}
+            onClick={() => {
+              if (inputValue.current) {
+                fetch_data(inputValue.current.value);
+              }
+            }}
+          >
+            {`->`}
+          </button>
+      </div>
       <h1 className={`${styles.h1}`}>
         {Array.isArray(aiwords) ? aiwords.join(", ") : aiwords}
       </h1>
