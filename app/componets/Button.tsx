@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Button.module.css";
 const backendUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 function Button() {
@@ -18,17 +18,31 @@ function Button() {
   };
 
   const inputValue = useRef<HTMLInputElement>(null);
+  const keyboardEvent = useRef<HTMLDivElement>(null);
 
-  inputValue.current?.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      if (inputValue.current) {
-        fetch_data(inputValue.current.value);
-      }
-    }
-  });
+  useEffect(() => {
+   
+      keyboardEvent.current?.addEventListener("keydown", (event) => {
+        if (event.key === "/") {
+          if (inputValue.current) {
+            inputValue.current.focus();
+          }
+        }
+      });
+      inputValue.current?.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          if (inputValue.current) {
+            fetch_data(inputValue.current.value);
+          }
+        }
+      });
+    
+  }, []);
+
+  
 
   return (
-    <div className={`${styles.container}`}>
+    <div className={`${styles.container}` } ref={keyboardEvent}>
       <div className={`${styles.inputbox}`}>
           <input type="text" className={`${styles.input_field}`} placeholder="enter data" ref={inputValue} />
           <button
