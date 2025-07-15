@@ -18,17 +18,10 @@ function Button() {
   };
 
   const inputValue = useRef<HTMLInputElement>(null);
-  const keyboardEvent = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
-   
-      keyboardEvent.current?.addEventListener("keydown", (event) => {
-        if (event.key === "/") {
-          if (inputValue.current) {
-            inputValue.current.focus();
-          }
-        }
-      });
+  
       inputValue.current?.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           if (inputValue.current) {
@@ -42,7 +35,7 @@ function Button() {
   
 
   return (
-    <div className={`${styles.container}` } ref={keyboardEvent}>
+    <div className={`${styles.container}`} >
       <div className={`${styles.inputbox}`}>
           <input type="text" className={`${styles.input_field}`} placeholder="enter data" ref={inputValue} />
           <button
